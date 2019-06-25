@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Test Project",
-    "slug": "TestProject",
+    "name": "Schrale Bingo",
+    "slug": "SchraleBingo",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [
@@ -9,13 +9,19 @@
       "android",
       "web"
     ],
+    "android": {
+      "package": "net.sytes.thierry.schralebingo",
+      "versionCode": 1,
+      "permissions": [],
+      "icon": "./assets/icon.png"
+    },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Button, Image, StyleSheet, Dimensions } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import BingoCard from "./components/BingoCard";
-// var Sound = require('react-native-sound');
+import BingoCard from "./components/BingoCard"
+import { Audio } from 'expo-av'
 
 const HomeScreen = ({ navigation }) => {
 
@@ -16,26 +16,15 @@ const HomeScreen = ({ navigation }) => {
     console.log("Reload bingoCardss")
     fetchPlayers().then(data => setPlayers(data))
 
-    // Music!
-    // Sound.setCategory('Playback');
-    // var whoosh = new Sound('./assets/erika.mp3', Sound.MAIN_BUNDLE, (error) => {
-    //   if (error) {
-    //     console.log('failed to load the sound', error);
-    //     return;
-    //   }
-    //   // loaded successfully
-    //   console.log('duration in seconds: ' + whoosh.getDuration() + 'number of channels: ' + whoosh.getNumberOfChannels());
-      
-    //   // Play the sound with an onEnd callback
-    //   whoosh.play((success) => {
-    //     if (success) {
-    //       console.log('successfully finished playisng');
-    //     } else {
-    //       console.log('playback failed due to audio decoding errors')
-    //     }
-    //   });
-    // });
-  }, []); 
+    const soundObject = new Audio.Sound();
+
+    soundObject.loadAsync(require('./assets/erika.mp3'))
+    .then(sound => {
+      soundObject.playAsync()
+        .then(() => {})
+    })
+
+  }, [])
 
   const fetchPlayers = () => {
     return fetch('https://thierry.sytes.net/schralebingo/api/players')
