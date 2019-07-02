@@ -3,6 +3,7 @@ import { View, Text, Button, Image, StyleSheet, Dimensions } from "react-native"
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import BingoCard from "./components/BingoCard"
 import { Audio } from 'expo-av'
+import AllCards from "./components/AllCards"
 
 const HomeScreen = ({ navigation }) => {
 
@@ -58,15 +59,20 @@ const HomeScreen = ({ navigation }) => {
             />
           </View>
         ))}
+        <View 
+            style={style.buttons}>
+            <Button
+              containerViewStyle={{width: '100%', marginLeft: 0}}
+              title="All Cards"
+              onPress={() => navigation.navigate('AllCards')}
+              color="gray"
+            />
+          </View>
       </View>
     </View>
   );
   
 }
-
-// HomeScreen.navigationOptions = ({ navigation }) => ({
-//   title: "Schrale Bingo!"
-// });
 
 const style = StyleSheet.create({
   image: {
@@ -91,8 +97,8 @@ const style = StyleSheet.create({
 
 const AppNavigator = createStackNavigator(
   {
-    Home: HomeScreen,
     BingoCard: BingoCard,
+    AllCards: AllCards,
     Home: {
       screen: HomeScreen,
       navigationOptions: {
@@ -117,6 +123,5 @@ const AppNavigator = createStackNavigator(
     },
   }
 );
-
 
 export default createAppContainer(AppNavigator);
